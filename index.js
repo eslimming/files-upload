@@ -84,30 +84,31 @@ app.get('/parseCSV/:file', async (req, res) => {
     const file = req.params.file
     const csv = require('csv-parser')
     const fs = require('fs')
-    try {
+    if (fs.existsSync('./uploads/' + file)) {
         try {
             fs.createReadStream('./uploads/' + file)
                 .pipe(csv())
                 .on('error', function (error) {
-                    source.destroy();
-                    console.log('csv error');
+                    res.send({
+                        file: file,
+                        resp: 'Error'
+                    });
                 })
                 .on('headers', (headers) => {
                     res.send({
                         file: file,
-                        tags: headers.slice(1)
+                        resp: headers.slice(1)
                     });
                 })
 
-        } catch {
-            res.status(500).send([]);
+        } catch (err) {
+            res.status(500).send(err);
         }
-
-
-    } catch {
-        res.status(500).send('error');
-
     }
+    else {
+        res.status(500).send({ file: file, resp: 'Error: Archino no existe' });
+    }
+
 });
 
 

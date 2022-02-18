@@ -1,1 +1,7 @@
-https://attacomsian.com/blog/uploading-files-nodejs-express
+Subir archivos:
+POST http://localhost:3000/upload
+
+
+Leer primera fila de un csv:
+npm install csv-parser
+GET http://localhost:3000/parseCSV/data_roi.csv
