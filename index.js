@@ -110,12 +110,6 @@ app.get('/fastCSV/:file', async (req, res) => {
     }
 });
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 0f79574ac9c782a261f6cfa519f705da83b75df9
-
-
 
 //*****************************************/
 // upload multiple files
