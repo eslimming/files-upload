@@ -80,7 +80,7 @@ app.get('/leerTags/:file', async (req, res) => {
 });
 
 
-app.get('/fastCSV/:file', async (req, res) => {
+app.get('/parseCSV/:file', async (req, res) => {
     const file = req.params.file
     const csv = require('csv-parser')
     const fs = require('fs')
